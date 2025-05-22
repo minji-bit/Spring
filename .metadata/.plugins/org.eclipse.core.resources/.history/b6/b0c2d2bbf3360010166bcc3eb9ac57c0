@@ -1,0 +1,11 @@
+package ex0522.homework;
+
+public class OrderMessageImpl implements OrderMessage {
+
+	@Override
+	public void getOrderMessage() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

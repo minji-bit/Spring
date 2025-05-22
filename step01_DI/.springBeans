@@ -11,6 +11,7 @@
 		<config>src/main/java/sample02/springDI-Constructor.xml</config>
 		<config>src/main/java/sample03/applicationContext.xml</config>
 		<config>src/main/java/sample04/springDI-setter.xml</config>
+		<config>src/main/java/ex0522/homework/applicationContext.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
