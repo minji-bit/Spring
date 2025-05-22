@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 객체생성 -->
+	<bean class="sample02.Member" id="m1" />
+	<bean class="sample02.Member" id="m2">
+		<constructor-arg value="jeon" /><!-- 인수 한개 받는 생성자 -->
+	</bean>
+	<bean class="sample02.Member" id="m3">
+		<constructor-arg value="kim" />
+		<constructor-arg value="30" type="int" />
+	</bean>
+
+	<bean class="sample02.Member" id="m4">
+		<constructor-arg value="1234" index="1" />
+		<constructor-arg value="king" index="0" />
+		<constructor-arg value="오리역" index="3" />
+		<constructor-arg value="20" index="2" />
+	</bean>
+	<bean class="sample02.MemberDAO" id="dao" />
+	<bean class="sample02.MemberService" id="service" >
+		<constructor-arg ref="m4"/>
+		<constructor-arg ref="dao"/>
+	</bean>
+</beans>

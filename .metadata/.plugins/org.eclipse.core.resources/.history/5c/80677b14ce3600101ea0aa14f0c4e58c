@@ -1,0 +1,15 @@
+package sample01;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		//기존방식 
+		MessageBean bean = new MessageBeanKoImpl();
+		bean.sayHello("민지");
+		
+		bean = new MessageBeanEnImpl();
+		bean.sayHello("minji");
+
+	}
+
+}

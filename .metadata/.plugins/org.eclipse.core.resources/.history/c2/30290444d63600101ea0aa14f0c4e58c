@@ -1,0 +1,9 @@
+package sample02;
+
+public class MemberDAO {
+	public MemberDAO() {
+	}
+	public void insert(Member member) {
+		System.out.println(member);
+	}
+}

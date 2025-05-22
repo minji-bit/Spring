@@ -1,0 +1,32 @@
+package sample04;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MainApp {
+	public MainApp() {
+	}
+	public static void main(String[] args) {
+		//기존방식
+				/*StudentDAO dao =new StudentDAOImpl();
+				
+				StudentService service = new StudentServiceImpl();
+				StudentServiceImpl serviceImp =(StudentServiceImpl) service;
+				serviceImp.setStudentDAO(dao);
+				
+				Student student = new Student();
+				student.setNo(1);
+				student.setAddr("서울");
+				student.setName("희정");
+				student.setPhone("111-2222");
+				
+				StudentController controller = new StudentController();
+				controller.setStudentService(service);
+				controller.setStudent(student);
+				
+				controller.insert();*/
+		
+		ApplicationContext application = new ClassPathXmlApplicationContext("sample04/application.xml");
+	}
+
+}

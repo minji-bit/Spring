@@ -1,0 +1,23 @@
+package sample02;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		//기존방식
+	/*	Member member = new Member("jeon","1234", 20, "오리역");
+		MemberDAO memberDao = new MemberDAO();
+		MemberService service = new MemberService(member, memberDao);
+		service.serviceInsert();*/
+		
+		/////////IoC Container 이용////////////////////////////////
+		ApplicationContext context = new ClassPathXmlApplicationContext("sample02/springDI-Constructor.xml");
+		System.out.println("------------------");
+		
+		MemberService service =context.getBean("service",MemberService.class);
+		service.serviceInsert();
+	}
+
+}

@@ -1,0 +1,32 @@
+package sample01;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		//기존방식 
+/*		MessageBean bean = new MessageBeanKoImpl();
+		bean.sayHello("민지");
+		
+		bean = new MessageBeanEnImpl();
+		bean.sayHello("minji");*/
+		
+		/////////////////////////////////////////////
+		
+		/**
+		 * Spring IoC Container의 ApplicationContext를 이용해서 객체 관리
+		 *  :bean 등록, 생성, 의존관계 주입, 생명주기 관리
+		 */
+		System.out.println("******시작하기**********");
+		ApplicationContext context = new ClassPathXmlApplicationContext("sample01/applicationContext.xml");
+		
+		System.out.println("----------------------------------------");
+		MessageBean bean = context.getBean("en",MessageBean.class);
+		bean.sayHello("minji");
+		bean = context.getBean("ko",MessageBean.class);
+		bean.sayHello("민지");
+	}
+
+}

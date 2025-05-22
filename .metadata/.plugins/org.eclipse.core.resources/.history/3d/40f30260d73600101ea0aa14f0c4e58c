@@ -1,0 +1,12 @@
+package sample02;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		//기존방식
+		MemberService service = new MemberService();
+		service.serviceInsert();
+
+	}
+
+}

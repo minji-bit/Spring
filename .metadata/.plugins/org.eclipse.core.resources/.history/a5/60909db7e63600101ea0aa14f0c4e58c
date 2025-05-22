@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 외부의 ~.properties 파일의 위치 설정 -->
+	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<array>
+				<value>classpath:info.properties</value>
+			</array>
+		</property>
+	</bean> -->
+	
+	<!-- context:xxx 는 Spring IoC Container 와 관련된 설정을 간소화 해주는 역할이다. -->
+	<context:property-placeholder location="classpath:info.properties"/>
+
+	<!-- 객체 생성 -->
+	<bean class="sample04.Student" id="st1">
+		<property name="addr" value="오리역" />
+		<property name="name" value="민지" />
+		<property name="no" value="01" />
+		<property name="phone" value="010-1234-5678" />
+	</bean>
+	<bean class="sample04.Student" id="st2">
+		<property name="no" value="${student.no}" />
+		<property name="addr" value="${student.addr}" />
+		<property name="name" value="${student.name}" />
+		<property name="phone" value="${student.phone}" />
+	</bean>
+
+	<bean class="sample04.StudentDAOImpl" id="dao" />
+	<bean class="sample04.StudentServiceImpl" id="service">
+		<property name="studentDAO" ref="dao" />
+	</bean>
+	<bean class="sample04.StudentController" id="con">
+		<property name="studentService" ref="service" />
+		<property name="student" ref="st2" />
+	</bean>
+</beans>
