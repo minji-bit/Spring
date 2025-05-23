@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- @Autowired를 활성화 시키는 bean 등록 -->
+	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" /> -->
+
+	<context:annotation-config /> <!--@Autowired ,@Qualifier,@PostConstruct ... 활성화 하는 bean 들을 한번에 등록해줌 -->
+	<!-- 객체 생성 -->
+	<bean class="sample06.EmpDTO" id="empDTO"/> 
+	<bean class="sample06.EmpDTO" id="empDTO2"/>
+	
+	<bean class="sample06.EmpService" id="empService" />
+	<bean class="sample06.EmpController" id="empController" />
+
+
+</beans>
