@@ -1,0 +1,18 @@
+package web.mvc.dto;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Setter
+@Getter
+@ToString
+
+public class UserDto {
+	private String id;
+	private String name;
+	private int age;
+	private String addr;
+	
+	
+}
