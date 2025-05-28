@@ -29,5 +29,20 @@ public class GlobalExceptionAdvice {
 		log.error("e={}",e);
 		return new ModelAndView("error/number","errMsg",e.getMessage());
 	}
+	/**
+	 * BasicException에 대한 처리
+	 */
+	@ExceptionHandler(BasicException.class)
+	public ModelAndView error3(BasicException e) {
+		log.error("error3={}",e.getErrorInfo().getMsg());
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("error/basic-error");
+		mv.addObject("status",e.getErrorInfo().getStatus());
+		mv.addObject("msg",e.getErrorInfo().getMsg());
+		mv.addObject("errorInfo",e.getErrorInfo());
+		
+		return mv;
+		
+	}
 	
 }
