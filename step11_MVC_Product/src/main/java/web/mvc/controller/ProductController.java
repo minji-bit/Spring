@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,7 @@ public class ProductController {
 	
 	private final ProductService service;
 	
-	@RequestMapping("/")
+	@GetMapping("/")
 	public ModelAndView selectAll(ModelAndView mv) {
 		List<ProductDTO> list = service.select();
 		Collections.sort(list,Comparator.comparing(p->p.getCode()));
@@ -34,6 +36,7 @@ public class ProductController {
 	
 	@PostMapping("/products")
 	public String insert(ProductDTO dto) {
+		dto.setDetail(dto.getDetail().replace("<", "&lt;"));
 		service.insert(dto);
 		return "redirect:/";
 	}
@@ -58,10 +61,13 @@ public class ProductController {
 	}
 	
 	@PostMapping("/products/{code}")
-	public String update(@PathVariable String code,ProductDTO dto) {
+	public String update(
+			@ModelAttribute("product") ProductDTO dto,
+			@PathVariable String code) {
 		dto.setCode(code);
 		service.updateByCode(dto);
-		return "redirect:/read?code="+code;
+	//	return "redirect:/read?code="+code;// db를 갔다와야함
+		return "read";
 	}
 	
 	
